@@ -20,11 +20,13 @@ class loggingFile implements ShouldQueue
      * @return void
      */
     protected $user_id;
+    protected $username;
     protected $file_id;
     protected $change;
-    public function __construct($user_id,$file_id,$change)
+    public function __construct($user_id,$username,$file_id,$change)
     {
         $this->user_id = $user_id;
+        $this->username = $username;
         $this->file_id = $file_id;
         $this->change = $change;
     }
@@ -38,6 +40,7 @@ class loggingFile implements ShouldQueue
     {
         $log = new logging();
         $log->user_id = $this->user_id;
+        $log->username = $this->username;
         $log->file_id = $this->file_id;
         $log->change = $this->change;
         $log->save();

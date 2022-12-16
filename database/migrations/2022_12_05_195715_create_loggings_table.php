@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('file_id');
+            $table->string('username');
             $table->string('change');
             $table->timestamps();
         });

@@ -18,16 +18,18 @@ class FileResourceN extends JsonResource
         if($this->check_in){
             return [
                 'id' => $this->id,
+                'user_id' => $this->user_id,
                 'name' => $this->name,
                 'file_name' => $this->file_name,
                 'check_in' => $this->check_in,
                 'mime_type' => $this->mime_type,
                 'size' => $this->size,
-                'user' => User::find($this->log->first())->pluck('username')
+                'user' => $this->log->first()->username//User::find($this->log->first())->pluck('username')
             ];
         }
         return [
             'name' => $this->name,
+            'user_id' => $this->user_id,
             'file_name' => $this->file_name,
             'check_in' => $this->check_in,
             'mime_type' => $this->mime_type,

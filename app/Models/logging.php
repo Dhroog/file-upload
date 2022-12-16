@@ -13,6 +13,7 @@ class logging extends Model
         'change',
         'user_id',
         'file_id',
+        'username'
     ];
 
 

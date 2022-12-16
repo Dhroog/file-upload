@@ -81,4 +81,9 @@ class FileController extends Controller
     {
         return app('services')->FileService->CheckIn($request->validated());
     }
+
+    public function FileHistory(File $file)
+    {
+        return app('services')->FileService->FileHistory($file);
+    }
 }

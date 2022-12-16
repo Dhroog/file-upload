@@ -76,6 +76,7 @@ class FileService extends BaseService
             $file->update(['check_in' => true]);
             loggingFile::dispatch(
                 auth()->id(),
+                auth()->user()->username,
                 $file->id,
                 'check-in'
             );
@@ -93,6 +94,7 @@ class FileService extends BaseService
         $file->update(['check_in' => false]);
         loggingFile::dispatch(
             auth()->id(),
+            auth()->user()->username,
             $file->id,
             'check-out'
         );
@@ -143,6 +145,10 @@ class FileService extends BaseService
         return $this->normalizeList($files,FileResourceN::class);
     }
 
+    public function FileHistory(File $file)
+    {
+        return $file->log;
+    }
 
     public function UserInGroup($user,Group $group)
     {

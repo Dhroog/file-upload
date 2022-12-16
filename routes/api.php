@@ -27,6 +27,8 @@ route::middleware('auth:sanctum')->group(function (){
     Route::post('/check-in-file',[FileController::class,'checkIn']);
     Route::get('/addUserToGroup/{group}/{user}',[GroupController::class,'addUserToGroup']);
     Route::get('/deleteUserFromGroup/{group}/{user}',[GroupController::class,'deleteUserFromGroup']);
+
+    Route::get('/FileHistory/{file}',[FileController::class,'FileHistory']);
 });
 
 
