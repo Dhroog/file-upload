@@ -24,7 +24,7 @@ class FileFactory extends Factory
             'mime_type' => fake()->fileExtension(),
             'path' => fake()->filePath(),
             'size' => fake()->randomNumber(6),
-            'user_id' => fake()->numberBetween(1,50)
+            //'user_id' => fake()->numberBetween(1,50)
         ];
     }
 }

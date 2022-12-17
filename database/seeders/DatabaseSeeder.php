@@ -17,14 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(50)
-            ->hasAttached(Group::factory(3)->hasAttached(File::factory(5)),['is_owner'=>true])
-            ->create();
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $users = User::factory(25)
+              ->hasAttached(Group::factory(3),['is_owner'=>true])
+              ->has(File::factory(5))
+              ->create();
+        foreach ($users as $user){
+            $files = $user->files;
+            $groups = $user->groups;
+            foreach ($files as $file){
+                foreach ($groups as $group){
+                    $group->files()->attach($file->id);
+                }
+            }
+        }
+        //->hasAttached(File::factory(5))
     }
 }

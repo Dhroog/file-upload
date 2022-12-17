@@ -27,12 +27,26 @@ route::middleware('auth:sanctum')->group(function (){
     Route::post('/check-in-file',[FileController::class,'checkIn']);
     Route::get('/addUserToGroup/{group}/{user}',[GroupController::class,'addUserToGroup']);
     Route::get('/deleteUserFromGroup/{group}/{user}',[GroupController::class,'deleteUserFromGroup']);
-
     Route::get('/FileHistory/{file}',[FileController::class,'FileHistory']);
+    Route::get('/admin/group-files',[GroupController::class,'GetAllGroup'])->middleware('can:Admin');
+});
+
+route::get('/load-balance',function (){
+    return response()->json([
+        'message' => 'this from laravel instance_22222'
+    ],200);
 });
 
 
-
-
 require __DIR__.'/auth.php';
+/*
+  ProxyPreserveHost On
 
+	ProxyPass /laravel1 http://localhost:8000/
+	ProxyPassReverse /laravel1 http://localhost:8000/
+
+	ProxyPass /laravel2 http://localhost:8001/
+	ProxyPassReverse /laravel2 http://localhost:8001/
+
+	ServerName localhost
+ */

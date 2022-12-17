@@ -41,7 +41,9 @@ class FilePolicy
      */
     public function create(User $user)
     {
-        return true;
+        //number-of-allowed
+        return $user->files->count() < config('my_file.number-of-allowed');
+        //return true;
     }
 
     /**

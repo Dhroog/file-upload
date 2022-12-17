@@ -74,4 +74,10 @@ class GroupController extends Controller
     {
         return app('services')->GroupService->Delete($group);
     }
+
+    public function GetAllGroup()
+    {
+        return app('services')->GroupService->GetAllGroup();
+    }
+
 }
