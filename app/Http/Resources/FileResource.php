@@ -20,7 +20,7 @@ class FileResource extends JsonResource
             'file_name' => $this->file_name,
             'check_in' => $this->check_in,
             'mime_type' => $this->mime_type,
-            'path' => Storage::path($this->path),
+            'path' =>  Storage::path($this->path),
             'size' => $this->size,
         ];
     }

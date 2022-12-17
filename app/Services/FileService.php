@@ -23,7 +23,7 @@ class FileService extends BaseService
         db::transaction(function () use ($data,&$file) {
             //get file from request
             $file = request()->file('file');
-            if(!$file) abort(400,'fail upload file');
+            if(!$file) abort(400,'failed upload file');
             //get group from database
             $group = Group::find($data['group_id']);
             //check if group contain this file
@@ -33,7 +33,7 @@ class FileService extends BaseService
             $uploadService = new UploadService();
             $file = $uploadService->file($file);
             //store file in database
-            $attributes = ['user_id' => auth()->id()] + $file->toArray();
+            //$attributes = ['user_id' => auth()->id()] + $file->toArray();
             $file = auth()->user()->files()->create($file->toArray());
             $group->files()->attach($file->id);
         });

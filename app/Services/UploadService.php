@@ -15,7 +15,8 @@ class UploadService implements UploadServiceInterface
     {
         $name = $file->hashName();
 
-        $path = Storage::put("Files/{$name}", $file);
+        //$path = Storage::putFile("public/Files/{$name}", $file,'public');
+        $path = Storage::putFile("public/Files/{$name}", $file,'public');
 
         return new File(
             name: "{$name}",
