@@ -13,7 +13,10 @@ class LoginController extends Controller
     {
         if(Auth::attempt($request->except('login')))
         {
-            return $this->Response('successes',$request->user()->createToken("auth_token")->plainTextToken);
+            return $this->Response('successes',[
+                'token'=> $request->user()->createToken("auth_token")->plainTextToken,
+                'user' => $request->user()
+            ]);
         }
         return $this->failureResponse('These credentials do not match our records.');
 

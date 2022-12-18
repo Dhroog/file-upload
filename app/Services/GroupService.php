@@ -28,7 +28,10 @@ class GroupService extends BaseService
 
     public function addUserToGroup(Group $group,User $user)
     {
-        abort_if(!$this->UserOwnerGroup(auth()->user(),$group),400,'user not join for this group');
+        abort_if(!$this->UserOwnerGroup(auth()->user(),$group),400,"user can't add other to this group");
+        $users = $group->users;
+
+            abort_if( $users->contains('id', $user->id) ,400,'user already join to this group');
         $group->users()->attach($user->id);
         return $this->normalize($group,GroupResource::class);
     }
@@ -58,8 +61,10 @@ class GroupService extends BaseService
             foreach ($files as $file){
                 abort_if($file->check_in,400,'there files check-in');
             }
+            $group->delete;
             abort(200,'group has Deleted');
         });
+
     }
 
     public function GetGroupsForUser()

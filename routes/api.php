@@ -29,6 +29,7 @@ route::middleware('auth:sanctum')->group(function (){
     Route::get('/deleteUserFromGroup/{group}/{user}',[GroupController::class,'deleteUserFromGroup']);
     Route::get('/FileHistory/{file}',[FileController::class,'FileHistory']);
     Route::get('/admin/group-files',[GroupController::class,'GetAllGroup'])->middleware('can:Admin');
+    Route::get('/GetUsers',[\App\Http\Controllers\UserController::class,'GetUsers']);
 });
 
 route::get('/load-balance',function (){

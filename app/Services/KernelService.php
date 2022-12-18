@@ -8,12 +8,12 @@ class KernelService
 {
     public $FileService;
     public $GroupService;
-    public $UserServeice;
+    public $UserService;
 
     public function __construct()
     {
         $this->FileService = new FileService();
         $this->GroupService = new GroupService();
-        $this->UserServeice = new UserService();
+        $this->UserService = new UserService();
     }
 }

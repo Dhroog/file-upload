@@ -39,7 +39,7 @@ trait ApiResponseTrait
 
     public function failureResponse($message = null): JsonResponse
     {
-        $this->SetStatus(205);
+        $this->SetStatus(400);
             return $this->Response(
                 $message ?? 'failure',
             );
