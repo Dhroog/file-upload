@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use App\Http\Middleware\ApiRequestLogging;
+use App\Http\Middleware\GzipMiddleware;
+use App\Http\Middleware\IpClientMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +67,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'request.logging' => ApiRequestLogging::class,
+        'Gzip' => GzipMiddleware::class,
+        'ip' => IpClientMiddleware::class,
     ];
 }

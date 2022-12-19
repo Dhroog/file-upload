@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-route::middleware('auth:sanctum')->group(function (){
+route::middleware(['auth:sanctum','Gzip','ip'])->group(function (){
     route::apiResource('group', GroupController::class);
     route::apiResource('file', FileController::class);
     Route::get('/addFileToGroup/{file}/{group}',[FileController::class,'addFileToGroup']);
@@ -33,6 +33,7 @@ route::middleware('auth:sanctum')->group(function (){
 });
 
 route::get('/load-balance',function (){
+
     return response()->json([
         'message' => 'this from laravel instance_22222'
     ],200);
